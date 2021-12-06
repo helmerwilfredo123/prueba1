@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{%block body%}
+
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{%  endfor %}
+{% endif %}
+{% endwith %}
+
+    
+
+<form action="registro" method="POST">
+
+    <input type="text" name="fullname" placeholder="Fullname">
+    <input type="text" name="pass" placeholder="Pass">
+    <button type="submit">Save</button>
+
+</form>
+<table>
+    <thead>
+    <tr>
+        <td>fullname</td>
+        <td>pass</td>
+        <td> 
+        </td>
+        <td>operaciones</td>
+    </tr>
+    </thead>
+    <tbody>
+        {%for reg in registro%}
+        <tr>
+            <td>{{reg.0}}</td>  
+            <td>{{reg.1}}</td>
+            <td>{{reg.2}}</td>        
+            <td>
+            <a href="/edit/{{reg.0}}">Edit</a>
+            <a href="/delete/{{reg.0}}">Delete</a>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>    
+{% endblock %}

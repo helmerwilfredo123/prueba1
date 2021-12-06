@@ -1,0 +1,9 @@
+PUT http://localhost:5000/usuarios/6
+Content-Type: application/json
+
+{
+
+    "nombres": "helmer222",
+    "email": "wilfredo@",
+    "contrasena": "112"
+}
